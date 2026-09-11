@@ -1,7 +1,1477 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Inteligencia Artificial</title>
+
+<style>
+
+/* CONFIGURACIÓN GENERAL */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #080b16;
+    color: #e8ecff;
+}
+
+
+/* PORTADA */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    padding: 40px 20px;
+
+    background:
+        radial-gradient(circle at 20% 30%, #233b8f, transparent 30%),
+        radial-gradient(circle at 80% 70%, #5b247a, transparent 30%),
+        #080b16;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "01 10 01 11 00 10 01 00";
+    position: absolute;
+
+    top: 40px;
+    left: 0;
+
+    width: 100%;
+
+    color: #5ee7ff;
+    font-size: 20px;
+    letter-spacing: 8px;
+    opacity: 0.3;
+}
+
+.hero-contenido {
+    max-width: 900px;
+    z-index: 2;
+}
+
+.cerebro {
+    font-size: 100px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 20px #5ee7ff);
+}
+
+.hero h1 {
+    font-size: 70px;
+
+    background: linear-gradient(
+        90deg,
+        #5ee7ff,
+        #a78bfa,
+        #ff6ec7
+    );
+
+    -webkit-background-clip: text;
+    color: transparent;
+
+    margin-bottom: 20px;
+}
+
+.hero h2 {
+    font-size: 28px;
+    color: #b8c7ff;
+    margin-bottom: 25px;
+}
+
+.hero p {
+    font-size: 20px;
+    line-height: 1.8;
+    color: #d4dcff;
+}
+
+.hero-boton {
+    display: inline-block;
+
+    margin-top: 30px;
+
+    padding: 15px 30px;
+
+    border: 2px solid #5ee7ff;
+
+    color: #5ee7ff;
+
+    text-decoration: none;
+
+    border-radius: 30px;
+
+    transition: 0.3s;
+}
+
+.hero-boton:hover {
+    background: #5ee7ff;
+    color: #080b16;
+    box-shadow: 0 0 25px #5ee7ff;
+}
+
+
+/* MENÚ */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    background: rgba(8, 11, 22, 0.96);
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    padding: 14px;
+
+    border-bottom: 1px solid #263b70;
+}
+
+nav a {
+    color: #cbd5ff;
+
+    text-decoration: none;
+
+    padding: 9px 13px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background: #172b5f;
+    color: #5ee7ff;
+}
+
+
+/* SECCIONES */
+
+section {
+    padding: 75px 8%;
+}
+
+.titulo {
+    text-align: center;
+
+    font-size: 38px;
+
+    margin-bottom: 40px;
+
+    color: #5ee7ff;
+}
+
+
+/* ¿QUÉ ES LA IA? */
+
+.que-es {
+    background: #0c1124;
+}
+
+.ia-explicacion {
+    max-width: 950px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 1.2fr 0.8fr;
+
+    gap: 40px;
+
+    align-items: center;
+}
+
+.ia-texto p {
+    font-size: 18px;
+
+    line-height: 1.9;
+
+    color: #ccd5f5;
+}
+
+.ia-pantalla {
+    background: #080b16;
+
+    border: 1px solid #334c91;
+
+    border-radius: 20px;
+
+    padding: 30px;
+
+    box-shadow: 0 0 30px rgba(94,231,255,0.1);
+}
+
+.pantalla-linea {
+    padding: 12px;
+
+    margin: 8px 0;
+
+    background: #111a35;
+
+    border-radius: 8px;
+
+    color: #5ee7ff;
+}
+
+
+/* FUNCIONAMIENTO */
+
+.funcionamiento {
+    background: #080b16;
+}
+
+.proceso {
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 15px;
+}
+
+.paso {
+    padding: 25px 18px;
+
+    text-align: center;
+
+    background: #10162d;
+
+    border-top: 3px solid #5ee7ff;
+
+    border-radius: 12px;
+
+    position: relative;
+}
+
+.paso-numero {
+    font-size: 35px;
+
+    color: #a78bfa;
+
+    margin-bottom: 12px;
+}
+
+.paso h3 {
+    color: #fff;
+
+    margin-bottom: 10px;
+}
+
+.paso p {
+    color: #adb8da;
+
+    line-height: 1.6;
+
+    font-size: 15px;
+}
+
+
+/* TIPOS */
+
+.tipos {
+    background:
+        linear-gradient(
+            135deg,
+            #111936,
+            #160e2c
+        );
+}
+
+.tipos-contenedor {
+    max-width: 1050px;
+
+    margin: auto;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 20px;
+}
+
+.tipo {
+    width: 300px;
+
+    padding: 30px;
+
+    background: rgba(255,255,255,0.04);
+
+    border: 1px solid #37477c;
+
+    border-radius: 18px;
+
+    text-align: center;
+
+    transition: 0.3s;
+}
+
+.tipo:hover {
+    transform: translateY(-8px);
+
+    border-color: #5ee7ff;
+}
+
+.tipo-icono {
+    font-size: 50px;
+
+    margin-bottom: 15px;
+}
+
+.tipo h3 {
+    color: #a78bfa;
+
+    margin-bottom: 12px;
+}
+
+.tipo p {
+    color: #c5ccea;
+
+    line-height: 1.7;
+}
+
+
+/* VIDA COTIDIANA */
+
+.vida {
+    background: #0c1124;
+}
+
+.vida-contenedor {
+    max-width: 1000px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.uso {
+    padding: 28px;
+
+    background: #111936;
+
+    border-radius: 15px;
+
+    border-left: 4px solid #ff6ec7;
+}
+
+.uso-icono {
+    font-size: 40px;
+
+    margin-bottom: 15px;
+}
+
+.uso h3 {
+    color: #5ee7ff;
+
+    margin-bottom: 10px;
+}
+
+.uso p {
+    color: #c5ccea;
+
+    line-height: 1.7;
+}
+
+
+/* EDUCACIÓN */
+
+.educacion {
+    background: #080b16;
+}
+
+.educacion-caja {
+    max-width: 950px;
+
+    margin: auto;
+
+    padding: 40px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            120deg,
+            #111936,
+            #1b1234
+        );
+
+    border: 1px solid #394b82;
+}
+
+.educacion-caja h3 {
+    color: #ff6ec7;
+
+    font-size: 28px;
+
+    margin-bottom: 18px;
+}
+
+.educacion-caja p {
+    color: #cbd4f2;
+
+    font-size: 18px;
+
+    line-height: 1.9;
+}
+
+
+/* VENTAJAS Y DESAFÍOS */
+
+.comparacion {
+    background: #0c1124;
+}
+
+.comparacion-contenedor {
+    max-width: 1000px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 25px;
+}
+
+.ventajas,
+.desafios {
+    padding: 30px;
+
+    border-radius: 20px;
+}
+
+.ventajas {
+    background: #0d2b35;
+
+    border: 1px solid #236879;
+}
+
+.desafios {
+    background: #28152c;
+
+    border: 1px solid #70416f;
+}
+
+.comparacion h3 {
+    font-size: 25px;
+
+    margin-bottom: 20px;
+}
+
+.ventajas h3 {
+    color: #5ee7ff;
+}
+
+.desafios h3 {
+    color: #ff6ec7;
+}
+
+.comparacion ul {
+    padding-left: 20px;
+}
+
+.comparacion li {
+    margin-bottom: 15px;
+
+    line-height: 1.6;
+
+    color: #d0d6ed;
+}
+
+
+/* USO RESPONSABLE */
+
+.responsable {
+    background: #111936;
+}
+
+.reglas {
+    max-width: 900px;
+
+    margin: auto;
+}
+
+.regla {
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 20px;
+
+    margin-bottom: 15px;
+
+    background: #0c1124;
+
+    border-radius: 12px;
+}
+
+.regla-numero {
+    min-width: 45px;
+
+    height: 45px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border-radius: 50%;
+
+    background: #5ee7ff;
+
+    color: #080b16;
+
+    font-weight: bold;
+}
+
+.regla h3 {
+    color: #fff;
+
+    margin-bottom: 5px;
+}
+
+.regla p {
+    color: #abb7d8;
+
+    line-height: 1.5;
+}
+
+
+/* FUTURO */
+
+.futuro {
+    background:
+        radial-gradient(
+            circle at center,
+            #243b78,
+            #080b16 65%
+        );
+
+    text-align: center;
+}
+
+.futuro-contenido {
+    max-width: 850px;
+
+    margin: auto;
+}
+
+.futuro h3 {
+    font-size: 35px;
+
+    color: #ff6ec7;
+
+    margin-bottom: 20px;
+}
+
+.futuro p {
+    font-size: 19px;
+
+    line-height: 1.9;
+
+    color: #d4dcff;
+}
+
+
+/* CURIOSIDADES */
+
+.curiosidades {
+    background: #0c1124;
+}
+
+.curiosidades-grid {
+    max-width: 1000px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.curiosidad {
+    background: #111936;
+
+    padding: 25px;
+
+    text-align: center;
+
+    border-radius: 18px;
+}
+
+.curiosidad-icono {
+    font-size: 40px;
+
+    margin-bottom: 12px;
+}
+
+.curiosidad h3 {
+    color: #5ee7ff;
+
+    margin-bottom: 10px;
+}
+
+.curiosidad p {
+    color: #bfc8e5;
+
+    line-height: 1.6;
+}
+
+
+/* CONCLUSIÓN */
+
+.conclusion {
+    background: #080b16;
+
+    text-align: center;
+}
+
+.conclusion-contenido {
+    max-width: 850px;
+
+    margin: auto;
+}
+
+.conclusion p {
+    font-size: 20px;
+
+    line-height: 1.9;
+
+    color: #d1d8ef;
+}
+
+
+/* FOOTER */
+
+footer {
+    background: #05070e;
+
+    padding: 30px;
+
+    text-align: center;
+
+    color: #8d98ba;
+}
+
+footer strong {
+    color: #5ee7ff;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+
+    .ia-explicacion {
+        grid-template-columns: 1fr;
+    }
+
+    .proceso {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .vida-contenedor {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .curiosidades-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero h1 {
+        font-size: 55px;
+    }
+
+}
+
+
+@media (max-width: 550px) {
+
+    .proceso,
+    .vida-contenedor,
+    .comparacion-contenedor,
+    .curiosidades-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .hero h2 {
+        font-size: 22px;
+    }
+
+    section {
+        padding: 60px 5%;
+    }
+
+}
+
+</style>
+
+</head>
+
+
 <body>
-    <h1>¡Mi página de tecnologia!</h1>
-    <p>Bienvenidos a aprender.</p>
+
+
+<!-- PORTADA -->
+
+<header class="hero">
+
+    <div class="hero-contenido">
+
+        <div class="cerebro">
+            🧠
+        </div>
+
+        <h1>INTELIGENCIA ARTIFICIAL</h1>
+
+        <h2>La tecnología que está transformando el mundo</h2>
+
+        <p>
+            Explora qué es la inteligencia artificial,
+            cómo funciona, dónde se utiliza y cuáles son
+            sus oportunidades y desafíos.
+        </p>
+
+        <a href="#que-es" class="hero-boton">
+            🚀 Comenzar
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- MENÚ -->
+
+<nav>
+
+    <a href="#que-es">¿Qué es?</a>
+
+    <a href="#funcionamiento">Funcionamiento</a>
+
+    <a href="#tipos">Tipos</a>
+
+    <a href="#vida">Vida cotidiana</a>
+
+    <a href="#educacion">Educación</a>
+
+    <a href="#comparacion">Ventajas</a>
+
+    <a href="#responsable">Uso responsable</a>
+
+    <a href="#futuro">Futuro</a>
+
+    <a href="#curiosidades">Datos</a>
+
+</nav>
+
+
+<!-- ¿QUÉ ES? -->
+
+<section class="que-es" id="que-es">
+
+    <h2 class="titulo">
+        🤖 ¿Qué es la Inteligencia Artificial?
+    </h2>
+
+    <div class="ia-explicacion">
+
+        <div class="ia-texto">
+
+            <p>
+                La Inteligencia Artificial es una tecnología
+                que permite crear sistemas capaces de realizar
+                tareas que normalmente requieren habilidades
+                humanas, como reconocer información, aprender
+                de datos, encontrar patrones y generar respuestas.
+            </p>
+
+            <br>
+
+            <p>
+                Actualmente la IA está presente en diferentes
+                áreas y puede utilizarse como una herramienta
+                para ayudar a las personas a resolver problemas
+                y realizar determinadas actividades.
+            </p>
+
+        </div>
+
+
+        <div class="ia-pantalla">
+
+            <div class="pantalla-linea">
+                > Analizando información...
+            </div>
+
+            <div class="pantalla-linea">
+                > Reconociendo patrones...
+            </div>
+
+            <div class="pantalla-linea">
+                > Procesando datos...
+            </div>
+
+            <div class="pantalla-linea">
+                > Generando resultado...
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FUNCIONAMIENTO -->
+
+<section class="funcionamiento" id="funcionamiento">
+
+    <h2 class="titulo">
+        ⚙️ ¿Cómo funciona?
+    </h2>
+
+    <div class="proceso">
+
+
+        <div class="paso">
+
+            <div class="paso-numero">01</div>
+
+            <h3>Datos</h3>
+
+            <p>
+                Los sistemas reciben información que puede
+                utilizarse para encontrar patrones.
+            </p>
+
+        </div>
+
+
+        <div class="paso">
+
+            <div class="paso-numero">02</div>
+
+            <h3>Aprendizaje</h3>
+
+            <p>
+                Algunos sistemas utilizan métodos de
+                aprendizaje automático para mejorar sus resultados.
+            </p>
+
+        </div>
+
+
+        <div class="paso">
+
+            <div class="paso-numero">03</div>
+
+            <h3>Análisis</h3>
+
+            <p>
+                El sistema procesa la información y busca
+                relaciones o patrones.
+            </p>
+
+        </div>
+
+
+        <div class="paso">
+
+            <div class="paso-numero">04</div>
+
+            <h3>Resultado</h3>
+
+            <p>
+                Finalmente produce una respuesta, predicción
+                o acción según la tarea.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- TIPOS -->
+
+<section class="tipos" id="tipos">
+
+    <h2 class="titulo">
+        🧩 Algunas formas de IA
+    </h2>
+
+
+    <div class="tipos-contenedor">
+
+
+        <div class="tipo">
+
+            <div class="tipo-icono">💬</div>
+
+            <h3>IA generativa</h3>
+
+            <p>
+                Puede generar contenido como texto, imágenes,
+                audio o código a partir de instrucciones.
+            </p>
+
+        </div>
+
+
+        <div class="tipo">
+
+            <div class="tipo-icono">👁️</div>
+
+            <h3>Visión artificial</h3>
+
+            <p>
+                Permite que los sistemas analicen imágenes
+                y determinados elementos visuales.
+            </p>
+
+        </div>
+
+
+        <div class="tipo">
+
+            <div class="tipo-icono">🗣️</div>
+
+            <h3>Procesamiento del lenguaje</h3>
+
+            <p>
+                Permite trabajar con lenguaje humano, por
+                ejemplo al analizar o generar texto.
+            </p>
+
+        </div>
+
+
+        <div class="tipo">
+
+            <div class="tipo-icono">📊</div>
+
+            <h3>Aprendizaje automático</h3>
+
+            <p>
+                Utiliza datos para que un sistema pueda
+                encontrar patrones y realizar predicciones.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- VIDA COTIDIANA -->
+
+<section class="vida" id="vida">
+
+    <h2 class="titulo">
+        🌎 IA en nuestra vida cotidiana
+    </h2>
+
+
+    <div class="vida-contenedor">
+
+
+        <div class="uso">
+
+            <div class="uso-icono">📱</div>
+
+            <h3>Teléfonos</h3>
+
+            <p>
+                Algunas funciones de los teléfonos utilizan
+                IA para reconocer imágenes, voz o patrones.
+            </p>
+
+        </div>
+
+
+        <div class="uso">
+
+            <div class="uso-icono">🎬</div>
+
+            <h3>Entretenimiento</h3>
+
+            <p>
+                Algunas plataformas utilizan sistemas de
+                recomendación para mostrar contenido.
+            </p>
+
+        </div>
+
+
+        <div class="uso">
+
+            <div class="uso-icono">🗺️</div>
+
+            <h3>Mapas</h3>
+
+            <p>
+                Los sistemas digitales pueden analizar datos
+                para ayudar con rutas y desplazamientos.
+            </p>
+
+        </div>
+
+
+        <div class="uso">
+
+            <div class="uso-icono">🛒</div>
+
+            <h3>Compras</h3>
+
+            <p>
+                Algunas tiendas digitales utilizan algoritmos
+                para recomendar productos.
+            </p>
+
+        </div>
+
+
+        <div class="uso">
+
+            <div class="uso-icono">🎧</div>
+
+            <h3>Asistentes</h3>
+
+            <p>
+                Algunas herramientas pueden interpretar
+                instrucciones mediante lenguaje natural.
+            </p>
+
+        </div>
+
+
+        <div class="uso">
+
+            <div class="uso-icono">📷</div>
+
+            <h3>Cámaras</h3>
+
+            <p>
+                Algunos dispositivos utilizan IA para mejorar
+                fotografías y reconocer diferentes elementos.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- EDUCACIÓN -->
+
+<section class="educacion" id="educacion">
+
+    <h2 class="titulo">
+        🏫 Inteligencia Artificial y educación
+    </h2>
+
+
+    <div class="educacion-caja">
+
+        <h3>📚 Una herramienta para aprender</h3>
+
+        <p>
+            La IA puede utilizarse en la educación para
+            explicar conceptos, practicar ejercicios,
+            organizar información y ayudar a los estudiantes
+            a comprender determinados temas.
+        </p>
+
+        <br>
+
+        <p>
+            Sin embargo, es importante utilizarla como apoyo
+            y revisar la información. Aprender significa
+            comprender lo que se está estudiando y no
+            simplemente copiar una respuesta.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- VENTAJAS Y DESAFÍOS -->
+
+<section class="comparacion" id="comparacion">
+
+    <h2 class="titulo">
+        ⚖️ Ventajas y desafíos
+    </h2>
+
+
+    <div class="comparacion-contenedor">
+
+
+        <div class="ventajas">
+
+            <h3>✅ Ventajas</h3>
+
+            <ul>
+
+                <li>Puede ayudar a analizar grandes cantidades de información.</li>
+
+                <li>Puede automatizar determinadas tareas.</li>
+
+                <li>Puede servir como herramienta de aprendizaje.</li>
+
+                <li>Puede apoyar diferentes áreas profesionales.</li>
+
+                <li>Puede ayudar a encontrar patrones en los datos.</li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="desafios">
+
+            <h3>⚠️ Desafíos</h3>
+
+            <ul>
+
+                <li>Puede producir información incorrecta.</li>
+
+                <li>Es importante proteger los datos personales.</li>
+
+                <li>Debe utilizarse de manera responsable.</li>
+
+                <li>Puede generar problemas si se utiliza sin supervisión.</li>
+
+                <li>Las personas deben aprender a evaluar sus resultados.</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- USO RESPONSABLE -->
+
+<section class="responsable" id="responsable">
+
+    <h2 class="titulo">
+        🔐 Uso responsable de la IA
+    </h2>
+
+
+    <div class="reglas">
+
+
+        <div class="regla">
+
+            <div class="regla-numero">
+                1
+            </div>
+
+            <div>
+
+                <h3>Verifica la información</h3>
+
+                <p>
+                    No todo lo que genera una IA necesariamente
+                    es correcto.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="regla">
+
+            <div class="regla-numero">
+                2
+            </div>
+
+            <div>
+
+                <h3>Protege tus datos</h3>
+
+                <p>
+                    Evita compartir información personal
+                    innecesaria.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="regla">
+
+            <div class="regla-numero">
+                3
+            </div>
+
+            <div>
+
+                <h3>Usa tu propio criterio</h3>
+
+                <p>
+                    Utiliza la IA como apoyo y piensa
+                    críticamente sobre sus respuestas.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="regla">
+
+            <div class="regla-numero">
+                4
+            </div>
+
+            <div>
+
+                <h3>Respeta a los demás</h3>
+
+                <p>
+                    La tecnología debe utilizarse de manera
+                    respetuosa y responsable.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FUTURO -->
+
+<section class="futuro" id="futuro">
+
+    <h2 class="titulo">
+        🚀 El futuro de la IA
+    </h2>
+
+
+    <div class="futuro-contenido">
+
+        <h3>Una tecnología en constante evolución</h3>
+
+        <p>
+            La inteligencia artificial continúa desarrollándose
+            y puede tener un papel cada vez más importante en
+            áreas como la educación, la ciencia, la medicina,
+            la comunicación y muchas otras actividades.
+        </p>
+
+        <br>
+
+        <p>
+            El desafío será aprovechar sus beneficios mientras
+            se mantienen la seguridad, la responsabilidad,
+            la privacidad y el criterio humano.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- CURIOSIDADES -->
+
+<section class="curiosidades" id="curiosidades">
+
+    <h2 class="titulo">
+        💡 Datos interesantes
+    </h2>
+
+
+    <div class="curiosidades-grid">
+
+
+        <div class="curiosidad">
+
+            <div class="curiosidad-icono">🧠</div>
+
+            <h3>Aprendizaje</h3>
+
+            <p>
+                Algunas IA pueden aprender patrones a partir
+                de grandes cantidades de datos.
+            </p>
+
+        </div>
+
+
+        <div class="curiosidad">
+
+            <div class="curiosidad-icono">🌐</div>
+
+            <h3>Muchas áreas</h3>
+
+            <p>
+                La IA puede utilizarse en diferentes sectores
+                y actividades.
+            </p>
+
+        </div>
+
+
+        <div class="curiosidad">
+
+            <div class="curiosidad-icono">🤖</div>
+
+            <h3>No es magia</h3>
+
+            <p>
+                Detrás de las herramientas de IA existen
+                algoritmos, datos y sistemas informáticos.
+            </p>
+
+        </div>
+
+
+        <div class="curiosidad">
+
+            <div class="curiosidad-icono">💻</div>
+
+            <h3>Computación</h3>
+
+            <p>
+                La IA necesita sistemas informáticos capaces
+                de procesar grandes cantidades de información.
+            </p>
+
+        </div>
+
+
+        <div class="curiosidad">
+
+            <div class="curiosidad-icono">🔎</div>
+
+            <h3>Patrones</h3>
+
+            <p>
+                Reconocer patrones es una parte importante
+                de muchas aplicaciones de IA.
+            </p>
+
+        </div>
+
+
+        <div class="curiosidad">
+
+            <div class="curiosidad-icono">⚡</div>
+
+            <h3>Evolución</h3>
+
+            <p>
+                Las técnicas y herramientas de IA continúan
+                cambiando con el avance de la tecnología.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CONCLUSIÓN -->
+
+<section class="conclusion">
+
+    <h2 class="titulo">
+        🌟 Conclusión
+    </h2>
+
+
+    <div class="conclusion-contenido">
+
+        <p>
+            La Inteligencia Artificial es una tecnología con
+            muchas posibilidades. Puede ayudarnos a aprender,
+            trabajar, investigar y resolver diferentes problemas.
+        </p>
+
+        <br>
+
+        <p>
+            Al mismo tiempo, debemos utilizarla con responsabilidad,
+            verificar la información y mantener siempre nuestro
+            propio criterio.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- PIE DE PÁGINA -->
+
+<footer>
+
+    <p>
+        🤖 Página educativa sobre
+        <strong>Inteligencia Artificial</strong>
+    </p>
+
+</footer>
+
+
 </body>
+
 </html>
